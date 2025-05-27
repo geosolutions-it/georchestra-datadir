@@ -59,6 +59,16 @@ spring:
         uri: ${georchestra.gateway.services.ogc-api-records.target}
         predicates:
         - Path=/ogc-api-records/**
+      - id: dtt-backend
+        uri: ${georchestra.gateway.services.dtt-backend.target}
+        predicates:
+        - Path=/dtt-api/**
+      - id: dtt-frontend
+        uri: ${georchestra.gateway.services.dtt-frontend.target}
+        predicates:
+        - Path=/dtt/**
+        filters:
+        - RewritePath=/dtt/(?<segment>.*),/$\{segment}
 
 georchestra.gateway.services:
   console.target: http://${CONSOLE_HOST}:8080/console/
@@ -71,3 +81,5 @@ georchestra.gateway.services:
   import.target: http://${IMPORT_HOST}:80/
   mapstore.target: http://${MAPSTORE_HOST}:8080/mapstore/
   ogc-api-records.target: http://${OGC_API_RECORDS_HOST}:8080/ogc-api-records/
+  dtt-backend.target: http://${DTT_BACKEND_HOST}:80/
+  dtt-frontend.target: http://${DTT_FRONTEND_HOST}:80/

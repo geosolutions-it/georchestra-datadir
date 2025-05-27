@@ -84,3 +84,17 @@ georchestra:
           json-user: true
       geoserver:
         target: ${georchestra.gateway.services.geoserver.target}
+      dtt-backend:
+        target: ${georchestra.gateway.services.dtt-backend.target}
+        access-rules:
+        - intercept-url: /dtt-api/api/v1/output/**
+          anonymous: true
+        - intercept-url: /dtt-api/**
+          anonymous: false
+          allowed-roles: SUPERUSER
+      dtt-frontend:
+        target: ${georchestra.gateway.services.dtt-frontend.target}
+        access-rules:
+        - intercept-url: /dtt/**
+          anonymous: false
+          allowed-roles: SUPERUSER

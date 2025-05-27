@@ -37,8 +37,8 @@ spring:
       enabled: false
 
 gn:
-  baseurl: https://georchestra-127-0-0-1.nip.io/geonetwork
-  legacy.url: https://georchestra-127-0-0-1.nip.io/geonetwork
+  baseurl: http://localhost/geonetwork
+  legacy.url: http://localhost/geonetwork
   language:
     default: eng
   linkToLegacyGN4: true
